@@ -33,7 +33,7 @@ pub fn generate_caster(ty: &impl ToTokens, trait_: &impl ToTokens, sync: bool) -
     };
 
     quote! {
-        #[::linkme::distributed_slice(::intertrait::CASTERS)]
+        #[::intertrait::distributed_slice(::intertrait::CASTERS)]
         fn #fn_ident() -> (::std::any::TypeId, ::intertrait::BoxedCaster) {
             (::std::any::TypeId::of::<#ty>(), Box::new(#new_caster))
         }

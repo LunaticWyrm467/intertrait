@@ -61,9 +61,9 @@ use std::collections::HashMap;
 use std::rc::Rc;
 use std::sync::Arc;
 
-use linkme::distributed_slice;
 use once_cell::sync::Lazy;
 
+pub use linkme::distributed_slice;
 pub use intertrait_macros::*;
 
 use crate::hasher::BuildFastHasher;
