@@ -14,16 +14,16 @@ With this crate, any trait object for a sub-trait of [`CastFrom`] can be cast di
 for another trait implemented by the underlying type if the target traits are registered beforehand
 with the macros provided by this crate.
 
+# Why was this forked?
+This was temporarily forked to address an issue with `linkme` being required as an external dependency.
+
 # Dependencies
-Add the following two dependencies to your `Cargo.toml`:
+Add the following dependency to your `Cargo.toml`:
 
 ```toml
 [dependencies]
 intertrait = "0.2"
-linkme = "0.2"
 ```
-
-The `linkme` dependency is required due to the use of `linkme` macro in the output of `intertrait` macros.
 
 # Usage
 
