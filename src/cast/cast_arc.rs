@@ -8,8 +8,8 @@ use std::sync::Arc;
 /// # Examples
 /// ```
 /// # use std::sync::Arc;
-/// # use intertrait::*;
-/// use intertrait::cast::*;
+/// # use portable_intertrait::*;
+/// use portable_intertrait::cast::*;
 ///
 /// # #[cast_to([sync] Greet)]
 /// # struct Data;

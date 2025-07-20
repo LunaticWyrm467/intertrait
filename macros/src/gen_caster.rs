@@ -1,6 +1,7 @@
 use std::str::from_utf8_unchecked;
 
 use proc_macro2::TokenStream;
+use syn::Path;
 use uuid::adapter::Simple;
 use uuid::Uuid;
 
@@ -8,12 +9,17 @@ use quote::format_ident;
 use quote::quote;
 use quote::ToTokens;
 
-pub fn generate_caster(ty: &impl ToTokens, trait_: &impl ToTokens, sync: bool) -> TokenStream {
+pub fn generate_caster(crate_loc: &Option<Path>, ty: &impl ToTokens, trait_: &impl ToTokens, sync: bool) -> TokenStream {
+    let crate_loc = crate_loc.as_ref().map_or_else(
+        || quote! { ::portable_intertrait },
+        |path| quote! { #path },
+    );
+
     let mut fn_buf = [0u8; FN_BUF_LEN];
     let fn_ident = format_ident!("{}", new_fn_name(&mut fn_buf));
     let new_caster = if sync {
         quote! {
-            ::portable_intertrait::Caster::<dyn #trait_>::new_sync(
+            #crate_loc::Caster::<dyn #trait_>::new_sync(
                 |from| from.downcast_ref::<#ty>().unwrap(),
                 |from| from.downcast_mut::<#ty>().unwrap(),
                 |from| from.downcast::<#ty>().unwrap(),
@@ -23,7 +29,7 @@ pub fn generate_caster(ty: &impl ToTokens, trait_: &impl ToTokens, sync: bool) -
         }
     } else {
         quote! {
-            ::portable_intertrait::Caster::<dyn #trait_>::new(
+            #crate_loc::Caster::<dyn #trait_>::new(
                 |from| from.downcast_ref::<#ty>().unwrap(),
                 |from| from.downcast_mut::<#ty>().unwrap(),
                 |from| from.downcast::<#ty>().unwrap(),
@@ -33,9 +39,9 @@ pub fn generate_caster(ty: &impl ToTokens, trait_: &impl ToTokens, sync: bool) -
     };
 
     quote! {
-        #[::portable_intertrait::linkme::distributed_slice(::portable_intertrait::CASTERS)]
-        #[linkme(crate = ::portable_intertrait::linkme)]
-        fn #fn_ident() -> (::std::any::TypeId, ::portable_intertrait::BoxedCaster) {
+        #[#crate_loc::linkme::distributed_slice(#crate_loc::CASTERS)]
+        #[linkme(crate = #crate_loc::linkme)]
+        fn #fn_ident() -> (::std::any::TypeId, #crate_loc::BoxedCaster) {
             (::std::any::TypeId::of::<#ty>(), Box::new(#new_caster))
         }
     }

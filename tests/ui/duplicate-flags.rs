@@ -1,5 +1,5 @@
-use intertrait::cast::*;
-use intertrait::*;
+use portable_intertrait::cast::*;
+use portable_intertrait::*;
 use std::sync::Arc;
 
 #[cast_to([sync, sync] Greet)]

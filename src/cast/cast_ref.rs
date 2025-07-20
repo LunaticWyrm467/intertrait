@@ -9,8 +9,8 @@ use crate::{caster, CastFrom, Caster, CASTER_MAP};
 /// # Examples
 /// ## Casting an immutable reference
 /// ```
-/// # use intertrait::*;
-/// use intertrait::cast::*;
+/// # use portable_intertrait::*;
+/// use portable_intertrait::cast::*;
 ///
 /// # #[cast_to(Greet)]
 /// # struct Data;
@@ -32,8 +32,8 @@ use crate::{caster, CastFrom, Caster, CASTER_MAP};
 ///
 /// ## Testing if a cast is possible
 /// ```
-/// # use intertrait::*;
-/// use intertrait::cast::*;
+/// # use portable_intertrait::*;
+/// use portable_intertrait::cast::*;
 ///
 /// # #[cast_to(Greet)]
 /// # struct Data;

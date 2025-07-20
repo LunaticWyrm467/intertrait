@@ -11,8 +11,8 @@
 //!
 //! # Usage
 //! ```
-//! use intertrait::*;
-//! use intertrait::cast::*;
+//! use portable_intertrait::*;
+//! use portable_intertrait::cast::*;
 //!
 //! struct Data;
 //!

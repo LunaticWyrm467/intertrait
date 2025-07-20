@@ -22,7 +22,7 @@ pub fn process(flags: &HashSet<Flag>, paths: Vec<Path>, input: DeriveInput) -> T
     } else {
         paths
             .into_iter()
-            .flat_map(|t| generate_caster(ident, &t, flags.contains(&Flag::Sync)))
+            .flat_map(|t| generate_caster(&None, ident, &t, flags.contains(&Flag::Sync)))
             .collect()
     };
     quote! {

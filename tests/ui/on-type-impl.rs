@@ -1,4 +1,4 @@
-use intertrait::*;
+use portable_intertrait::*;
 
 struct Data;
 

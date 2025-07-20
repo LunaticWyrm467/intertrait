@@ -32,7 +32,7 @@ pub fn process(flags: &HashSet<Flag>, input: ItemImpl) -> TokenStream {
             },
             (None, path, _) => {
                 let path = fully_bound_trait(path, items);
-                generate_caster(self_ty, &path, flags.contains(&Flag::Sync))
+                generate_caster(&None, self_ty, &path, flags.contains(&Flag::Sync))
             }
         },
     };

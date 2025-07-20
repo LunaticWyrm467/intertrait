@@ -22,14 +22,14 @@ Add the following dependency to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-intertrait = "0.2"
+portable_intertrait = "0.2"
 ```
 
 # Usage
 
 ```rust
-use intertrait::*;
-use intertrait::cast::*;
+use portable_intertrait::*;
+use portable_intertrait::cast::*;
 
 struct Data;
 
@@ -62,7 +62,7 @@ Target traits must be explicitly designated beforehand. There are three ways of 
 The trait implemented is designated as a target trait.
 
 ```rust
-use intertrait::*;
+use portable_intertrait::*;
 
 struct Data;
 trait Greet { fn greet(&self); }
@@ -79,7 +79,7 @@ impl Greet for Data {
 For the type, the traits specified as arguments to the `#[cast_to(...)]` attribute are designated as target traits.
 
 ```rust
-use intertrait::*;
+use portable_intertrait::*;
 
 trait Greet { fn greet(&self); }
 
@@ -98,7 +98,7 @@ struct Data;
 For the type, the traits following `:` are designated as target traits.
 
 ```rust
-use intertrait::*;
+use portable_intertrait::*;
 
 #[derive(std::fmt::Debug)]
 struct Data;

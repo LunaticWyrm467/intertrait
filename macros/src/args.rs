@@ -60,16 +60,26 @@ impl Parse for Targets {
 }
 
 pub struct Casts {
-    pub ty: Type,
-    pub targets: Targets,
+    pub crate_loc: Option<Path>,
+    pub ty:        Type,
+    pub targets:   Targets,
 }
 
 impl Parse for Casts {
     fn parse(input: ParseStream) -> Result<Self> {
+        let mut crate_loc = None;
+        if input.peek(Token![crate]) {
+            input.parse::<Token![crate]>()?;
+            input.parse::<Token![=]>()?;
+            crate_loc = Some(input.parse()?);
+            input.parse::<Token![|]>()?;
+        }
+
         let ty: Type = input.parse()?;
         input.parse::<Token![=>]>()?;
 
         Ok(Casts {
+            crate_loc,
             ty,
             targets: input.parse()?,
         })

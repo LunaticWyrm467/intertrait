@@ -8,8 +8,8 @@ use std::rc::Rc;
 /// # Examples
 /// ```
 /// # use std::rc::Rc;
-/// # use intertrait::*;
-/// use intertrait::cast::*;
+/// # use portable_intertrait::*;
+/// use portable_intertrait::cast::*;
 ///
 /// # #[cast_to(Greet)]
 /// # struct Data;

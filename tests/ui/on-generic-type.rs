@@ -1,5 +1,5 @@
-use intertrait::*;
-use intertrait::cast::*;
+use portable_intertrait::*;
+use portable_intertrait::cast::*;
 use std::marker::PhantomData;
 
 #[cast_to(Greet)]
