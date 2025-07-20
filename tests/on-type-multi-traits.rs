@@ -1,5 +1,5 @@
-use intertrait::cast::*;
-use intertrait::*;
+use portable_intertrait::cast::*;
+use portable_intertrait::*;
 
 #[cast_to(Greet, Greet1, Greet2)]
 struct Data;

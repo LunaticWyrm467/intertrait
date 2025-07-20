@@ -66,7 +66,7 @@ use linkme::distributed_slice;
 use once_cell::sync::Lazy;
 
 pub use linkme;
-pub use intertrait_macros::*;
+pub use portable_intertrait_macros::*;
 
 use crate::hasher::BuildFastHasher;
 

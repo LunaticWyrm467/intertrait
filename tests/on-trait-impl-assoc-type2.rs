@@ -1,7 +1,7 @@
 use std::fmt::Debug;
 
-use intertrait::cast::*;
-use intertrait::*;
+use portable_intertrait::cast::*;
+use portable_intertrait::*;
 
 struct Data;
 
